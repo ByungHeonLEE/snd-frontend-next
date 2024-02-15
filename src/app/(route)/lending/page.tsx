@@ -13,10 +13,13 @@ import { Card } from "@/app/_components/Common/Card";
 import { LendingTable } from "./_components/lendingTable";
 import { LendingController } from "./_components/lendingController";
 
+export type Token = "ETH" | "USDT" | "USDC";
+
 export default function Lending() {
   const [cdpPositionId, setCdpPositionId] = useState("");
 
   const [isSupply, setIsSupply] = useState(true);
+  const [selectedToken, setSelectedToken] = useState<Token>("ETH");
 
   const { writeContract } = useWriteContract();
 
@@ -48,6 +51,15 @@ export default function Lending() {
     );
   };
 
+  const depositCdpPosition = () => {
+    writeContract({
+      abi: cdpContractAbi,
+      address: "0x585c82f7DAc53263800b59D276d573ef87Af8119",
+      functionName: "deposit",
+      args: [cdpPositionId, 1000],
+    });
+  };
+
   useEffect(() => {
     if (result.data) {
       console.log(result);
@@ -66,11 +78,9 @@ export default function Lending() {
     //   </LendingButton>
     //   <div>{cdpPositionId}</div>
     // </div>
-    <div className="flex flex-col justify-start items-start w-full bg-point gap-5">
+    <div className="flex flex-col justify-start items-start w-full bg-point gap-5 p-5">
       <Card className="flex flex-row justify-between items-start p-5">
-        <div className="text-2842 font-semibold">
-          Supernova
-        </div>
+        <div className="text-2842 font-semibold">Supernova</div>
         <div className="text-1624">
           <div>Net Worth $0</div>
           <div>APY 0.00%</div>
@@ -79,7 +89,9 @@ export default function Lending() {
 
       <div className="flex flex-row w-full h-[100px] gap-2">
         <Card className="flex flex-col w-1/3 p-3 gap-5">
-          <div className="text-2024 w-full whitespace-nowrap">Your Supplies</div>
+          <div className="text-2024 w-full whitespace-nowrap">
+            Your Supplies
+          </div>
           <div>Price</div>
         </Card>
         <Card className="flex flex-col w-1/3 p-3 gap-5">
@@ -87,15 +99,20 @@ export default function Lending() {
           <div>Price</div>
         </Card>
         <Card className="flex flex-col w-1/3 p-3 gap-5">
-          <div className="text-2024 w-full whitespace-nowrap">Health Factor</div>
+          <div className="text-2024 w-full whitespace-nowrap">
+            Health Factor
+          </div>
           <div>%</div>
         </Card>
       </div>
       <div className="flex flex-row w-full gap-2">
         <LendingTable></LendingTable>
-        <LendingController isSupply={isSupply} setIsSupply={setIsSupply}></LendingController>
+        <LendingController
+          isSupply={isSupply}
+          setIsSupply={setIsSupply}
+          selectedToken={selectedToken}
+        ></LendingController>
       </div>
-
     </div>
   );
 }
