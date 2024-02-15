@@ -46,6 +46,9 @@ export default function Home() {
           </div>
         </Card>
       </div>
+      <Card className="flex flex-col justify-start items-start p-5">
+        Cex
+      </Card>
     </div>
   );
 }
