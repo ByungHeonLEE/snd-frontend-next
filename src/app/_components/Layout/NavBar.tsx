@@ -21,7 +21,7 @@ const ConnectWallet = () => {
 
 export const NavBar = () => {
   return (
-    <div className="w-full h-[60px] flex flex-row justify-between items-center px-4">
+    <div className="w-full h-[60px] flex flex-row justify-between items-center px-4 bg-primary">
       <div className="flex flex-row justify-start items-center gap-5">
         <div className="justify-center items-center">
           <Link href="/">

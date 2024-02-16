@@ -7,7 +7,7 @@ interface Props {
 
 export const Card = ({ className = "w-full", children }: Props) => {
   return (
-    <div className="w-full shadow-xl bg-primary">
+    <div className="w-full shadow-xl bg-white">
       <div className={className}>{children}</div>
     </div>
   );

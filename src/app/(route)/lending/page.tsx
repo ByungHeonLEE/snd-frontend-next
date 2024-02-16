@@ -107,7 +107,7 @@ export default function Lending() {
   }, [result]);
 
   return (
-    <div className="flex flex-col justify-start items-start w-full bg-point gap-5 p-5">
+    <div className="flex flex-col justify-start items-start w-full gap-5 p-5">
       <Card className="flex flex-row justify-between items-start p-5">
         <div className="text-2842 font-semibold">Supernova</div>
         <div>
@@ -133,17 +133,17 @@ export default function Lending() {
           <div className="text-2024 w-full whitespace-nowrap">
             Your Supplies
           </div>
-          <div>Price</div>
+          <div className="text-2842">$</div>
         </Card>
         <Card className="flex flex-col w-1/3 p-3 gap-5">
           <div className="text-2024 w-full whitespace-nowrap">Your Borrows</div>
-          <div>Price</div>
+          <div className="text-2842">$</div>
         </Card>
         <Card className="flex flex-col w-1/3 p-3 gap-5">
           <div className="text-2024 w-full whitespace-nowrap">
             Health Factor
           </div>
-          <div>%</div>
+          <div className="text-2842 items-center">1.9</div>
         </Card>
       </div>
       <div className="flex flex-row w-full gap-2">
