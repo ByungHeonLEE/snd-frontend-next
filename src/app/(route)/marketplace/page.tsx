@@ -76,6 +76,7 @@ export default function MarketPlace() {
       owner: '0x123',
       collateralToken: { amount: '100', price: '200' },
       debtToken: { amount: '50', price: '100' },
+      registeredPrice: '100',
       imageUrl: '/path/to/your/image.jpg', // Add image URLs here
     },
     {
@@ -83,6 +84,7 @@ export default function MarketPlace() {
       owner: '0x123',
       collateralToken: { amount: '100', price: '200' },
       debtToken: { amount: '50', price: '100' },
+      registeredPrice: '100',
       imageUrl: '/path/to/your/image.jpg', // Add image URLs here
 
     },
@@ -98,14 +100,16 @@ export default function MarketPlace() {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {marketplaceItems.map(item => (
-          <div key={item.id} className="bg-white rounded-lg shadow-md p-5 relative">
+          <div key={item.id} className="bg-white rounded-lg shadow-md p-5 relative" onClick={() => { setSelectedItem(item); setIsItemModalOpen(true); }}>
             <img src={item.imageUrl} alt="Thumbnail" className="w-full h-48 object-cover rounded-md" />
-            <h3 className="text-lg font-bold mt-2">Owner: {item.owner}</h3>
+            <h3 className="text-lg font-bold mt-2">Registered Price: {item.registeredPrice}</h3>
+            <p className="text-sm">Current Net Price: ${Number(item.collateralToken.price) - Number(item.debtToken.price)}</p>
+
             <button
               className="absolute bottom-2 right-2 bg-blue-500 text-white p-2 rounded"
               onClick={() => { setSelectedItem(item); setIsItemModalOpen(true); }}
             >
-              Details
+              Purchase
             </button>
           </div>
         ))}

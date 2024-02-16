@@ -147,7 +147,7 @@ export default function Lending() {
         </Card>
       </div>
       <div className="flex flex-row w-full gap-2">
-        <LendingTable></LendingTable>
+        <LendingTable isSupply={isSupply}></LendingTable>
         <LendingController
           isSupply={isSupply}
           setIsSupply={setIsSupply}

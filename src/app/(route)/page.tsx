@@ -25,9 +25,9 @@ export default function Home() {
       <div className="flex flex-row w-full gap-6">
         <Card className="flex flex-col justify-start items-start p-5">
           <div className="text-2842">Total Collateral</div>
-          <div className="text-2024">staked ETH</div>
-          <div className="text-2024">staked Wemix</div>
-          <div className="text-2024">Price: $ Wemix</div>
+          <div className="text-2024">Deposited ETH</div>
+          <div className="text-2024">Deposited USDC</div>
+          <div className="text-2024">Aggregated Price: $ </div>
           <div className="flex flex-row justify-end items-center w-full">
             <Link href="lending/">
               <LendingButton>Deposit</LendingButton>
@@ -36,9 +36,9 @@ export default function Home() {
         </Card>
         <Card className="flex flex-col justify-start items-start p-5">
           <div className="text-2842">Total Borrowed</div>
-          <div className="text-2024">borrowed ETH</div>
-          <div className="text-2024">borrowed Wemix</div>
-          <div className="text-2024">Price: $ Wemix</div>
+          <div className="text-2024">Borrowed ETH</div>
+          <div className="text-2024">Borrowed Wemix</div>
+          <div className="text-2024">Aggregated Price: $</div>
           <div className="flex flex-row justify-end items-center w-full">
             <Link href="lending/">
               <LendingButton>Borrow</LendingButton>
