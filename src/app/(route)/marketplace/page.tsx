@@ -113,7 +113,7 @@ export default function MarketPlace() {
         functionName: "register",
         args: [
           "0x585c82f7DAc53263800b59D276d573ef87Af8119",
-          "5",
+          "8",
           "1",
         ],
       },
