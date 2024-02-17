@@ -2,6 +2,14 @@ import { Card } from "@/app/_components/Common/Card";
 import classNames from "classnames";
 import { useState } from "react";
 import { Token } from "../page";
+import { useBalance } from "wagmi";
+
+import {
+    cdpContractAbi,
+    cdpContractAddress,
+} from "@/app/_contract/cdpContract";
+
+import { useReadContract, useWriteContract } from "wagmi";
 
 interface ToggleSwitchProps {
     isSupply: boolean;
@@ -57,11 +65,35 @@ export const LendingController = ({
     // TODO : get user balance from wallet
     const userBalance = 1213;
 
+    const { writeContract } = useWriteContract();
+
+    const openCdpPosition = () => {
+        writeContract(
+            {
+                abi: cdpContractAbi,
+                address: "0x585c82f7DAc53263800b59D276d573ef87Af8119",
+                functionName: "open",
+                args: [],
+            },
+            {
+                onSuccess: (txHash) => {
+                    console.log(txHash);
+                },
+                onSettled: (txHash) => {
+                    console.log(txHash);
+                },
+                onError(error, variables, context) {
+                    console.log(error, variables, context);
+                },
+            },
+        );
+    };
+
     const [amount, setAmount] = useState(0);
 
     const openCdpPositions = [
         { id: '1', token: 'ETH', balance: '2.0' },
-        { id: '2', token: 'DAI', balance: '1000' }
+        { id: '5', token: 'DAI', balance: '1000' }
     ];
 
     const [selectedPositions, setSelectedPositions] = useState<string[]>([]);
@@ -92,7 +124,7 @@ export const LendingController = ({
                                 checked={selectedPositions.includes(position.id)}
                                 onChange={() => handleSelectPosition(position.id)}
                             />
-                            {`${position.token}: ${position.balance}`}
+                            {`${position.id}: ${position.balance}`}
                         </li>
                     ))}
                 </ul>
@@ -105,7 +137,7 @@ export const LendingController = ({
                     <div className="flex flex-row justify-between items-center w-full">
                         <input
                             type="number"
-                            className="px-5 text-start outline-none border-none bg-[#CACACA] w-3/4 h-10"
+                            className="px-5 text-start outline-none rounded-lg border-none bg-[#CACACA] w-3/4 h-10"
                             value={amount}
                             onChange={(e) => {
                                 setAmount(parseInt(e.target.value));
@@ -135,8 +167,10 @@ export const LendingController = ({
                         />
                     </div>
                 </div>
-                <button className="bg-point text-white rounded-[30px] w-full h-[60px]">
-                    Enter an Amount
+                <button className="bg-point text-white rounded-[30px] w-full h-[60px]" onClick={() => {
+                    openCdpPosition();
+                }}>
+                    Open and Deposit
                 </button>
             </Card>
         </div>

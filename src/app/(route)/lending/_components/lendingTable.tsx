@@ -41,38 +41,31 @@ export const LendingTable = ({ isSupply }: LendingTableProps) => {
     const dummyData = [
         {
             assets: "ETH",
-            walletBalance: "0",
-            apy: "0",
-            totalValueLocked: "0",
+            walletBalance: "1213",
+            apy: "10.00",
+            totalValueLocked: "5000",
             id: "0"
         },
         {
-            assets: "Wemix",
+            assets: "USDC",
             walletBalance: "1000",
-            apy: "4.00",
-            totalValueLocked: "1235",
+            apy: "10.00",
+            totalValueLocked: "0",
             id: "1"
         },
-        {
-            assets: "stWemix",
-            walletBalance: "12345",
-            apy: "3.01",
-            totalValueLocked: "644",
-            id: "2"
-        }
     ]
 
     const borrowData = [
         {
-            assets: "Wemix",
-            walletBalance: "1000",
+            assets: "Ether",
+            walletBalance: "1213",
             apy: "4.00",
             totalValueLocked: "1235",
             id: "0"
         },
         {
-            assets: "stWemix",
-            walletBalance: "12345",
+            assets: "USDC",
+            walletBalance: "0",
             apy: "3.01",
             totalValueLocked: "644",
             id: "1"
@@ -90,9 +83,8 @@ export const LendingTable = ({ isSupply }: LendingTableProps) => {
                 {isSupply ? (
                     <div>
                         <div className="text-2842">Your Supplies</div>
-                        <div className="text-2024">nothing supplied yet</div>
                         <div className="text-2024">Ether</div>
-                        <div className="text-2024">Price: $ Wemix</div>
+                        <div className="text-2024">Price: $ 5.0</div>
                     </div>
                 ) : (
                     <div>

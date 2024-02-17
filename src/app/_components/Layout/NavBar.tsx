@@ -32,9 +32,10 @@ export const NavBar = () => {
         </div>
         <div className="text-1624 flex flex-row justify-start items-center gap-5">
           <Link href="/"> Home </Link>
+          <Link href="/lending">Lending</Link>
           <Link href="/marketplace"> MarketPlace</Link>
           {/* menu */}
-          <Link href="/lending">Lending</Link>
+          <Link href="/marketplace"> Github</Link>
         </div>
       </div>
       <div className="flex flex-row bg-primary gap-5 items-center justify-end rounded-xl">
